@@ -46,7 +46,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 set.seed(1)
 
 # Pre and post cutoff
-cutoff <- as.Date("2017-01-01") 
+cutoff <- as.Date("2017-01-01")
+#post_cutoff <- as.Date("2018-02-04")
 post_cutoff <- as.Date("2018-01-12")
 
 # Load data from csv (data manually collected from coinmarketcap.com)
@@ -217,11 +218,11 @@ full_data <- df_pred %>%
 
 # Final chart, BTC price with prediction
 ggplot(full_data, aes(x=Date)) +
-  geom_line(aes(y=Close), colour = "black") +
-  geom_ribbon(aes(ymin = lower_5, ymax = upper_5), alpha = 0.3) +
-  geom_ribbon(aes(ymin = lower_10, ymax = upper_10), alpha = 0.3) +
-  geom_line(aes(y=mean), colour = "blue") +
-  geom_line(aes(y=post_close), colour = "red") +
+  geom_line(aes(y=Close), colour = "#1f78b4", size = 1) +
+  geom_ribbon(aes(ymin = lower_5, ymax = upper_5), fill = "#33a02c", alpha = 0.2) +
+  geom_ribbon(aes(ymin = lower_10, ymax = upper_10), fill = "#33a02c", alpha = 0.2) +
+  geom_line(aes(y=mean), colour = "#33a02c", size = 1) +
+  geom_line(aes(y=post_close), colour = "#ff7f00", size = 1) +
   labs(title = "Bitcoin Daily Close Price and HMM Prediction",
        subtitle = "HMM is a 3 state model on log value of daily returns",
        x = "Date", y = "Close Price (USD)") +
