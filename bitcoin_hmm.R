@@ -96,6 +96,7 @@ p2 <- ggplot(df_data) +
         axis.title.x = element_blank())
 p3 <- ggplot(df_data, aes(x=Date, y=state)) +
   geom_line() +
+  scale_y_continuous(breaks = c(1, 2, 3)) +
   labs(y = "HMM State") +
   theme_classic()
 multiplot(plotlist = list(p1, p2, p3), cols = 1)
